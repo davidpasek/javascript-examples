@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>JavaScript Training - Hello World App</title>
+    <script>
+    function HelloWorldAlert() {
+      try {
+        aalert("Hello World");
+      }
+      catch(err) {
+	console.log("Try-Catch-Error:" + err.message);
+      }
+    }
+
+    function HelloWorldConsoleLog() {
+      console.log("Hello World");
+    }
+
+    function HelloWorldWebPage(op) {
+      var div = document.getElementById('divhelloworld');
+      if (op == 'del') {
+        div.innerHTML = '';
+      } else {
+        div.innerHTML = '<h2>Hello World</h2>';
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Training - Hello World App</h1>
+    <p>
+    This is just a simple web application where we are demonstrating how JavaScript language is used to build dynamic web applicationsi running in client's browsers.
+    </p>
+    <p>
+    <form>
+      <input type="button" value="Alert Message" onClick="HelloWorldAlert();"></input>
+      <input type="button" value="Log Message" onClick="HelloWorldConsoleLog();"></input>
+      <input type="button" value="Write Message to web page" onClick="HelloWorldWebPage();"></input>
+      <input type="button" value="Delete message from web page" onClick="HelloWorldWebPage('del');"></input>
+    </form>
+    </p>
+    <div id="divhelloworld">
+    </div>
+  </body>
+</html>

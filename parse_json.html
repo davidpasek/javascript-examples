@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>JavaScript Training - Parse JSON</title>
+    <script>
+    function parseJSON() {
+      var divOutput = document.getElementById('divOutput');
+      var textareaInput = document.getElementById('jsonInput');
+      var text = textareaInput.value;
+      var json = JSON.parse(text);
+
+      divOutput.innerHTML  = 'Parsing output goes here ...<br>';
+      divOutput.innerHTML += 'Name: ' + json.name + '<br>';
+
+      var restartGroups = json.restartGroups;
+      if (Array.isArray(restartGroups)) {
+	divOutput.innerHTML += 'restartGroups is array.<br>';
+	// Go through restartGroups array
+        for (i=0; i<restartGroups.length; i++) {
+	  var restartGroup = restartGroups[i];
+	  divOutput.innerHTML += 'Restart group name: ' + restartGroup.name + '<br>';
+	}
+      }
+
+    } // end of function parseJSON
+
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Training - Parse JSON</h1>
+    <p>
+    This is just a simple web application where we are demonstrating how JavaScript language is used to parse JSON into JavaScript Array.
+    </p>
+    <p>
+    <form>
+      <b>Insert JSON here:</b><br />
+      <textarea id="jsonInput" rows="20" cols="80" id="jsonInput">
+{
+  "sys_is": "2b1adb55db7ddb08e8e5f7b31d96198a",
+  "name": "AO-POC-SERVICE-TEST",
+  "restartGroups": [{
+    "hwServers": [{
+      "cmdStart": "ansible-tower-service start",
+      "sys_id": "a51a631ddbb11748d6dff1c51d961952",
+      "actionAgent": "AGENT-01",
+      "name": "PP-TEST-VIRT",
+      "ipAddress": "192.168.17.129",
+      "cmdStop": "ansible-tower-service stop",
+      "cmdStartStopAgent": "AGENT-01"
+    }, {
+      "cmdStart": "ansible-tower-service start",
+      "sys_id": "b8ed1be3db3d9748e8e5f7b31d961973",
+      "actionAgent": "AGENT-01",
+      "name": "PP-TEST-VIRT",
+      "ipAddress": "192.168.17.129",
+      "cmdStop": "ansible-tower-service stop",
+      "cmdStartStopAgent": "AGENT-01"
+    }],
+    "name": "AO-GROUP"
+  }]
+}
+      </textarea>
+      <br />
+      <input type="button" value="Parse" onClick="parseJSON();"></input>
+    </form>
+    </p>
+    Parsing output ...<br />
+    <div id="divOutput" style="border: solid 1px; width: 500px; height: 300px">
+    </div>
+  </body>
+</html>
